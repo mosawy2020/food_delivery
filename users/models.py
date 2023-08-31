@@ -33,7 +33,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     created = models.DateField(auto_now_add=True, null=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -44,6 +44,3 @@ class User(AbstractUser):
         self.set_password(self.password)
         # print(self.password)
         super().save(*args, **kwargs)
-
-
-
