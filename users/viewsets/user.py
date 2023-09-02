@@ -8,7 +8,7 @@ from rest_framework.decorators import action
 
 from users.serializers.profile import ProfileSerializer
 from users.serializers.register import RegisterSerializer
-
+from users.serializers.changePasswordSerializer import ChangePasswordSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserListSer

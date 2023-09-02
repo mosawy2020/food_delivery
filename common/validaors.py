@@ -11,3 +11,18 @@ class Confirmed:
     def __call__(self, value, ser):
         if value != ser.parent.initial_data.get(self.other_field):
             raise ValidationError(_('This field is not confirmed'))
+
+
+class Exists:
+    requires_context = True
+
+    def __init__(self, check_field):
+        self.check_field = check_field
+
+    def __call__(self, value, ser):
+        to_check = self.check_field
+        if not ser.parent.Meta.model.objects.filter(**{to_check:value}).exists():
+            raise ValidationError(
+                _("%(value)s does not exist"),
+                params={"value": value},
+            )

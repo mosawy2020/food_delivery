@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = ['users']
-DOWNLOADED_APPS = ['rest_framework']
+DOWNLOADED_APPS = ['rest_framework',
+                   'debug_toolbar'
+                   ]
 INSTALLED_APPS += LOCAL_APPS+DOWNLOADED_APPS
 
 MIDDLEWARE = [
@@ -48,6 +50,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
+]
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
 ]
 
 ROOT_URLCONF = 'core.urls'

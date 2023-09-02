@@ -10,4 +10,5 @@ router.register(prefix='users', viewset=UserViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
