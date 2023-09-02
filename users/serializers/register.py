@@ -12,5 +12,5 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ["first_name", 'last_name', 'email', 'is_active', 'password', 'confirm_password']
 
     def create(self, validated_data):
-        validated_data = validated(validated_data, except_these=['confirm_password'])
-        return User.objects.create(**validated_data)
+        validated_data = validated(data=validated_data, except_these=['confirm_password'])
+        return super().create(validated_data)
