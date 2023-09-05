@@ -9,7 +9,7 @@ from django.core.validators import ValidationError
 
 class ChangePasswordSerializer(serializers.ModelSerializer):
     new_password = serializers.CharField(write_only=True,
-                                         # validators=[validate_password]
+                                         validators=[validate_password]
                                          )
     confirm_new_password = serializers.CharField(write_only=True, validators=[Confirmed(other_field='new_password')])
     old_password = serializers.CharField(write_only=True)

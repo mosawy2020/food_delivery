@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from common.helpers import User, validated
-from common.validaors import Confirmed
+from common.validaors import Confirmed, Same
 
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    confirm_password = serializers.CharField(write_only=True, validators=[Confirmed(other_field='password')])
+    confirm_password = serializers.CharField(write_only=True, validators=[Same(other_field="password")])
 
     class Meta:
         model = User
